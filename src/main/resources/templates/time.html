@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Thymeleaf</title>
+
+        <!-- reference css file-->
+       <style>
+           .module{
+               color: fuchsia;
+               font-style: italic;
+               padding: 5px;
+               background-color: black;
+           }
+       </style>
+    </head>
+
+        <body>
+            <p th:text="'Time on the server is' + ${time}"  class="module"/>
+        </body>
+
+</html>

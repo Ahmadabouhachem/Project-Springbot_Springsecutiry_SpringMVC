@@ -18,7 +18,7 @@ public class EmployeeRestController {
         employeeService = theEmployeeService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String welcomeOffice() {
         return "Welcome to Office!";
     }
