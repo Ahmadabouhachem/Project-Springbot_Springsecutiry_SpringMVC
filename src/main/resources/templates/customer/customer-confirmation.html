@@ -38,11 +38,11 @@
 <body>
     <div class="confirmation-container">
         <h2 class="confirmation-heading" >Thank you for submitting!</h2>
-        <p class="confirmation-details" >First Name:      <a th:text="${customer_var.firstName}" /></p>
-        <p class="confirmation-details" >Last Name:       <a th:text="${customer_var.lastName}" /> </p>
-        <p class="confirmation-details" >Age:             <a th:text="${customer_var.age}"/>  </p>
-        <p class="confirmation-details" >Email:           <a th:text="${customer_var.email}" /> </p>
-        <p class="confirmation-details" >already Customer? <a th:text="${customer_var.alreadyCustomer}" /> </span></p>
+        <p class="confirmation-details" >First Name:      <a th:text="${customer.firstName}" /></p>
+        <p class="confirmation-details" >Last Name:       <a th:text="${customer.lastName}" /> </p>
+        <p class="confirmation-details" >Age:             <a th:text="${customer.age}"/>  </p>
+        <p class="confirmation-details" >Email:           <a th:text="${customer.email}" /> </p>
+        <p class="confirmation-details" >already Customer? <span th:if="${customer.alreadyCustomer == true}">yes</span> <span th:unless="${customer_var.alreadyCustomer == true}">no</span></p>
     </div>
 </body>
 </html>

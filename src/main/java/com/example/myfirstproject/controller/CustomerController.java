@@ -1,4 +1,4 @@
-package com.example.myfirstproject.rest;
+package com.example.myfirstproject.controller;
 
 import com.example.myfirstproject.entity.Customer;
 import jakarta.validation.Valid;
@@ -25,18 +25,18 @@ public class CustomerController {
     @GetMapping("")
     public String showForm(Model theModel){
 
-        theModel.addAttribute("customer_var", new Customer());
+        theModel.addAttribute("customer", new Customer());
 
-        return "customer";
+        return "/customer/customer";
     }
 
     @PostMapping("/processForm")
-    public String processForm (@Valid @ModelAttribute("customer_var") Customer theCustomer, BindingResult theBindingResult){
+        public String processForm (@Valid @ModelAttribute("customer") Customer theCustomer, BindingResult theBindingResult){
         if(theBindingResult.hasErrors()) {
-            return "customer-error";
+            return "/customer/customer-error";
         }
         else {
-            return "customer-confirmation";
+            return "/customer/customer-confirmation";
         }
     }
 

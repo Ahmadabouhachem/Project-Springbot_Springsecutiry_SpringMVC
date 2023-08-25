@@ -1,11 +1,11 @@
 package com.example.myfirstproject.exception;
 public class StudentNotFoundException extends RuntimeException {
 
-    public StudentNotFoundException(String message) {
+    public  StudentNotFoundException(String message) {
         super(message);
     }
 
-    public StudentNotFoundException(String message, Throwable cause) {
+    public  StudentNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 

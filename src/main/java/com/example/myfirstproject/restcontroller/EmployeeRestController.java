@@ -1,4 +1,4 @@
-package com.example.myfirstproject.rest;
+package com.example.myfirstproject.restcontroller;
 
 import com.example.myfirstproject.entity.Employee;
 import com.example.myfirstproject.service.EmployeeService;

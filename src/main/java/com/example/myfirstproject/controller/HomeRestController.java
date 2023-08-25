@@ -1,4 +1,4 @@
-package com.example.myfirstproject.rest;
+package com.example.myfirstproject.controller;
 
 
 import org.springframework.beans.factory.annotation.Value;
@@ -20,15 +20,21 @@ public class HomeRestController {
     @Value("${coach.nationality}")
     private String country;
 
-    // expose "/" that return my Message!
     @GetMapping("")
-    public String welcomeHome(Model theModel) {
+    public String getHome() {
+        return "/home/welcome";
+    }
+    @GetMapping("/time")
+    public String time(Model theModel) {
         theModel.addAttribute("time", new java.util.Date());
-        return "time";
+        return "/home/time";
     }
 
     @GetMapping("/coachinfo")
-    public String getInfoCoach() {
-        return "The Name ist: " + name + ", his Age is: " + old + ", his Nationality is: " + country;
+    public String getInfoCoach(Model theModel) {
+        String coach= "The Name ist: " + name + ", his Age is: " + old + ", his Nationality is: " + country;
+        theModel.addAttribute("coach",coach);
+        return "/home/coach";
     }
+
 }

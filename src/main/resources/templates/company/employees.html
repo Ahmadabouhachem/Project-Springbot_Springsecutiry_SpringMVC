@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <title>Company Employees</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Company Employees</h3>
+    <hr>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Rate</th>
+            <th>Email</th>
+            <th>Graduated</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="tempEmployee : ${Employees}">
+
+
+            <td th:text="${tempEmployee.id}"/>
+            <td th:text="${tempEmployee.firstName}"/>
+            <td th:text="${tempEmployee.lastName}"/>
+            <td th:text="${tempEmployee.age}"/>
+            <td th:text="${tempEmployee.gender}"/>
+            <td th:text="${tempEmployee.rate}"/>
+            <td th:text="${tempEmployee.email}"/>
+            <td><span th:if="${tempEmployee.graduated== true}">yes</span> <span
+                    th:unless="${tempEmployee.graduated == true}">no</span></td>
+            <td>
+                <a th:href="@{/company/update(employeeId=${tempEmployee.id})}" class="btn btn-info btn-sm">
+                    Update</a>
+
+                <a th:href="@{/company/delete(employeeId=${tempEmployee.id})}" class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('are you sure want to delete this employee?'))) return false">
+                    Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/company/form}" class="btn btn-info btn-sm"> Add Employee </a>
+
+</div>
+
+</body>
+</html>
+
+
+
+

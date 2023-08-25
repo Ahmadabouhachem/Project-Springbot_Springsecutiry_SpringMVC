@@ -1,9 +1,10 @@
-package com.example.myfirstproject.rest;
+package com.example.myfirstproject.restcontroller;
 
 
 import com.example.myfirstproject.entity.Student;
 import com.example.myfirstproject.exception.StudentNotFoundException;
 import jakarta.annotation.PostConstruct;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -46,6 +47,12 @@ public class StudentRestController {
         } else {
             return students.get(studentId - 1);
         }
+    }
+    
+    @GetMapping("/list")
+    public String listEmployee(Model theModel){
+        theModel.addAttribute("students-list", students);
+        return "/school/test";
     }
 
 }
