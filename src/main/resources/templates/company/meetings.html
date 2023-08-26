@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .back {
+            background-color: firebrick;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+        .back:hover {
+            background-color: red;
+        }
+    </style>
+    <title>meetings</title>
+</head>
+<body>
+<h1>Meeting room</h1>
+<hr><br>
+<a th:href="@{/company/employees}" class="back"> Back to Employees </a>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <!-- Required meta tags -->
@@ -10,8 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <style>
-        .logout{
-            margin-top:10px;
+        .logout {
+            margin-left: 90%;
             background-color: orange;
             color: #ffffff;
             border: none;
@@ -20,9 +21,31 @@
             cursor: pointer;
             transition: background-color 0.5s ease;
         }
-        input[type="submit"]:hover {
-            background-color: yellow;
+
+        .role {
+            margin-left: 70%;
+            padding: 10px;
+            background-color: #3498db;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .meeting{
+            margin-left: 70%;
+            padding: 10px;
+            background-color: darkseagreen;
+            border-radius: 10px;
+            cursor: pointer;
             color: black;
+            text-decoration: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: coral;
+        }
+        .meeting:hover{
+            background-color: green;
+            color: white;
         }
 
     </style>
@@ -34,6 +57,18 @@
 <div class="container">
 
     <h3>Company Employees</h3>
+    <p class="role">
+        User: <span sec:authentication="principal.username"></span>
+        <br>
+        Role: <span sec:authentication="principal.authorities"></span>
+        <br>
+    <div  sec:authorize="hasRole('MANAGER')">
+        <a class="meeting" th:href="@{/company/leaders}">Leadership Meeting (only for manager people)</a>
+    </div>
+    </p>
+    <form action="" th:action="@{/logout}" method="post">
+        <input class="logout" type="submit" value="logout"/>
+    </form>
     <hr>
 
     <table class="table table-bordered table-striped">
@@ -77,10 +112,6 @@
     </table>
 
     <a th:href="@{/company/form}" class="btn btn-info btn-sm"> Add Employee </a>
-
-    <form action="" th:action="@{/logout}" method="post">
-        <input class="logout" type="submit" value="logout"/>
-    </form>
 
 </div>
 

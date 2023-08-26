@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .error-message {
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #e74c3c;
+        }
+
+        p {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+
+    </style>
+    <title>Access Denied</title>
+</head>
+<body>
+<body>
+<div class="container">
+    <div class="error-message">
+        <h1>Access Denied</h1>
+        <p>You do not have permission to access this page.</p>
+        <hr>
+        <a th:href="@{/company/employees}" class="back"> Back to Employees </a>
+    </div>
+</div>
+</body>
+</body>
+</html>
