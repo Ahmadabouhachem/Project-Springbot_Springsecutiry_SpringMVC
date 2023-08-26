@@ -32,8 +32,12 @@ public class HomeRestController {
 
     @GetMapping("/coachinfo")
     public String getInfoCoach(Model theModel) {
-        String coach= "The Name ist: " + name + ", his Age is: " + old + ", his Nationality is: " + country;
-        theModel.addAttribute("coach",coach);
+        String coachName=name;
+        int coachOld=old;
+        String coachNat= country;
+        theModel.addAttribute("coachName",coachName);
+        theModel.addAttribute("coachOld",coachOld);
+        theModel.addAttribute("coachNat",coachNat);
         return "/home/coach";
     }
 

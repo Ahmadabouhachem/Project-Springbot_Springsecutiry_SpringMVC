@@ -1,20 +1,20 @@
-//package com.example.myfirstproject.security;
+package com.example.myfirstproject.security;
 
 import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-//import org.springframework.security.config.Customizer;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.core.userdetails.User;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-//import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
 
-//@Configuration
-//public class SecurityConfig {
+@Configuration
+public class SecurityConfig {
 
     /*
    @Bean
@@ -34,9 +34,8 @@ import javax.sql.DataSource;
     }
 */
 
-/*
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager(){
+    public InMemoryUserDetailsManager userDetailsManager() {
         UserDetails ahmadAdmin = User.builder()
                 .username("ahmad")
                 .password("{bcrypt}$2a$10$Y9u2ihG0wp/qBOgoSpAfoulP/QLs8CFMmTnTR1qpA2en4j/iGxOQO")
@@ -54,39 +53,61 @@ import javax.sql.DataSource;
                 .password("{bcrypt}$2a$10$QSEAsmiGHmXwffcJgOXJXeZCiCb42mGgmnxGCPRNVoeRsKOIrupbO")
                 .roles("USER")
                 .build();
-        return new InMemoryUserDetailsManager(ahmadAdmin,ahmadManager,ahmadUser);
+        return new InMemoryUserDetailsManager(ahmadAdmin, ahmadManager, ahmadUser);
     }
-*/
-    /*
+
+
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests(configurer -> configurer
+      /*  http.authorizeHttpRequests(configurer -> configurer
+
+                //company
+                .requestMatchers(HttpMethod.GET,"/company").hasRole("USER")
+                .requestMatchers(HttpMethod.GET,"/company/employees").hasRole("USER")
+                .requestMatchers(HttpMethod.GET,"/company/form").hasRole("MANAGER")
+                .requestMatchers(HttpMethod.GET,"/company/update").hasRole("MANAGER")
+                .requestMatchers(HttpMethod.POST,"/company/save").hasRole("MANAGER")
+                .requestMatchers(HttpMethod.GET,"/company/delete").hasRole("ADMIN")
+
+                //error
+                .requestMatchers(HttpMethod.GET,"/error").hasRole("USER")
+
+                //customer
                 .requestMatchers(HttpMethod.GET,"/customer").hasRole("USER")
-                .requestMatchers(HttpMethod.GET,"/customer/home").hasRole("USER")
-                .requestMatchers(HttpMethod.GET,"/customer/home /processForm").hasRole("USER")
+                .requestMatchers(HttpMethod.GET,"/customer/processForm").hasRole("USER")
 
+                //school
                 .requestMatchers(HttpMethod.GET,"/school").hasRole("USER")
                 .requestMatchers(HttpMethod.GET,"/school/students").hasRole("USER")
 
+                //home
                 .requestMatchers(HttpMethod.GET,"/home").hasRole("USER")
+                .requestMatchers(HttpMethod.GET,"/home/time").hasRole("USER")
                 .requestMatchers(HttpMethod.GET,"/home/coachinfo").hasRole("USER")
 
+                //office
                 .requestMatchers(HttpMethod.GET,"/office").hasRole("USER")
                 .requestMatchers(HttpMethod.GET,"/office/employees").hasRole("USER")
                 .requestMatchers(HttpMethod.GET,"/office/employees/**").hasRole("USER")
                 .requestMatchers(HttpMethod.POST,"/office/employees").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.PUT,"/office/employees").hasRole("MANAGER")
                 .requestMatchers(HttpMethod.DELETE,"/office/employees/**").hasRole("ADMIN")
-        );
+        ); */
 
-        http.httpBasic(Customizer.withDefaults());
+        http.authorizeHttpRequests(configurer -> configurer
+                        .anyRequest().authenticated())
+                        .formLogin(form -> form
+                        .loginPage("/login")
+                        .loginProcessingUrl("/authenticateTheUser")
+                        .permitAll())
+                        .logout(logout->logout.permitAll());
 
-        http.csrf(csrf -> csrf.disable());
+        //  http.httpBasic(Customizer.withDefaults());
+
+        // http.csrf(csrf -> csrf.disable());
 
         return http.build();
     }
-*/
 
-
-//}
+}

@@ -2,31 +2,31 @@
 <html lang="en" xml:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      background-color: black;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
+    <meta charset="UTF-8">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
 
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      color: #ffffff;
-      border: 2px solid #333;
-      padding: 10px 20px;
-      border-radius: 10px;
-    }
-  </style>
-  <title>coach</title>
+        * {
+            text-align: center;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+    </style>
+    <title>coach</title>
 </head>
 
 <body>
-<h1 th:text="${coach}"></h1>
+    <p>The Coach's name is:<a th:text="${coachName}"/>
+        <br> His old is:<a th:text="${coachOld}"/>
+        <br> His country is:<a th:text="${coachNat}"/></p>
 </body>
 
 </html>

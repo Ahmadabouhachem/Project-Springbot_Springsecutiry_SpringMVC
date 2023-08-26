@@ -8,12 +8,12 @@ public class Customer {
 
     private String firstName;
 
-    @NotNull(message = "Fill this Field please!")
-    @Size(min = 1, message = "Fill this Field please!")
-    @Pattern(regexp = "^[a-zA-Z0-9]{4}", message = "only 4 chars/digits")
+    //@NotNull(message = "Fill this Field please!")
+    //@Size(min = 1, message = "Fill this Field please!")
+    //@Pattern(regexp = "^[a-zA-Z0-9]{4}", message = "only 4 chars/digits")
     private String lastName;
-    @Min(value=0, message = "must be greater than zero")
-    @Max(value=100, message = "must be lower than 10")
+    //@Min(value=0, message = "must be greater than zero")
+    //@Max(value=100, message = "must be lower than 10")
     private Integer age;
 
     private String email;
