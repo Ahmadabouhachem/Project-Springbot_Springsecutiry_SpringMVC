@@ -3,7 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-
   <style>
     body {
       margin: 0;
@@ -86,6 +85,7 @@
     .dropdown-menu li a:hover {
       color: #ff9900;
     }
+
     .logout {
       margin-left:800px ;
       background-color: orange;
@@ -98,7 +98,8 @@
     }
 
   </style>
-  <title>home</title>
+
+  <title>MAIN</title>
 </head>
 
 <body>
@@ -142,13 +143,13 @@
         <li><a href="/ahmad/company/employees">Employees</a></li>
       </ul>
     </li>
+
     <form action="" th:action="@{/logout}" method="post">
       <input class="logout" type="submit" value="logout"/>
     </form>
   </ul>
 </nav>
-
-<h1> Welcome in Company</h1>
+<h1> Welcome in Main Menu</h1>
 </body>
 
 </html>

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/home") //it means the user must write localhost:8081/(servlet.context-path)/home
+@RequestMapping("") //it means the user must write localhost:8081/(servlet.context-path)/home
 public class HomeRestController {
 
     @Value("${name}")
@@ -21,6 +21,11 @@ public class HomeRestController {
     private String country;
 
     @GetMapping("")
+    public String getMain() {
+        return "/home/main";
+    }
+
+    @GetMapping("/home")
     public String getHome() {
         return "/home/welcome";
     }

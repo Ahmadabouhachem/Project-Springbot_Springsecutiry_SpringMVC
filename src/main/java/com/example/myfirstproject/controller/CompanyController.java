@@ -10,11 +10,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/company")
-public class EmployeeController {
+public class CompanyController {
 
     private EmployeeService employeeService;
 
-    public EmployeeController(EmployeeService theEmployeeService) {
+    public CompanyController(EmployeeService theEmployeeService) {
         employeeService = theEmployeeService;
     }
 

@@ -48,11 +48,4 @@ public class StudentRestController {
             return students.get(studentId - 1);
         }
     }
-    
-    @GetMapping("/list")
-    public String listEmployee(Model theModel){
-        theModel.addAttribute("students-list", students);
-        return "/school/test";
-    }
-
 }

@@ -9,12 +9,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/office")
-public class EmployeeRestController {
+public class OfficeRestController {
 
     private EmployeeService employeeService;
 
     @Autowired
-    public EmployeeRestController(EmployeeService theEmployeeService) {
+    public OfficeRestController(EmployeeService theEmployeeService) {
         employeeService = theEmployeeService;
     }
 
