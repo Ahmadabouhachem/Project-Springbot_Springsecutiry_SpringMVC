@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    p{
+      font-size: larger;
+      font-weight: bold;
+    }
+    .back {
+      background-color: firebrick;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+    .back:hover {
+      background-color: red;
+    }
+  </style>
+  <title>Profile</title>
+</head>
+<body>
+<h1>Your Profile</h1>
+
+<p class="role">
+  your Username: <span sec:authentication="principal.username"></span>
+  <br>
+  your Role: <span sec:authentication="principal.authorities"></span>
+</p>
+
+<hr><br>
+<a th:href="@{/company/employees}" class="back"> Back to Employees </a>
+
+</body>
+</html>

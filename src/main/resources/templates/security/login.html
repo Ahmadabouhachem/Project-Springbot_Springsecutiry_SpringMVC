@@ -16,8 +16,8 @@
         }
 
         .login-container {
-            background-color: #ffffff;
-            border-radius: 8px;
+            background-color: #fffff8;
+            border-radius: 20px;
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
             padding: 20px;
             width: 300px;
@@ -25,11 +25,12 @@
         }
 
         .login-container h2 {
-            margin-bottom: 20px;
+            font-family: "Italic Outline Art";
         }
 
         .login-form input {
-            width: 100%;
+            font-family: "Italic Outline Art";
+            width: 80%;
             padding: 15px 5px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -38,6 +39,7 @@
 
         .login-form button {
             background-color: #007bff;
+            font-family: "Italic Outline Art";
             color: #ffffff;
             border: none;
             border-radius: 4px;
@@ -54,16 +56,16 @@
 <body>
 <div class="login-container">
     <h2>Login</h2>
-    <form class="login-form" action="#" th:action="@{/authenticateTheUser}" method="post">
+    <div th:if="${param.error}">
+        <i style="color: red; font-family: 'Italic Outline Art';"> <strong>WRONG!<br>invalid username or
+            password.</strong></i>
+    </div>
 
-        <div th:if="${param.error}">
-            <i style="color: red; font-family: 'fantasy';"> <strong>WRONG! <br>invalid username or password.</strong></i>
-
-        </div>
-
-        <div th:if="${param.logout}">
-            <i style="color: limegreen; font-family: 'fantasy';"> <strong>YOU HAVE BEEN LOGGED OUT.</strong></i>
-        </div>
+    <div th:if="${param.logout}">
+        <i style="color: #008000; font-family: 'Italic Outline ART';"> <strong>You have been logged
+            out!</strong></i>
+    </div>
+    <form class="login-form" action="" th:action="@{/authenticateTheUser}" method="post">
 
         <input type="text" name="username" placeholder="Username" required>
 

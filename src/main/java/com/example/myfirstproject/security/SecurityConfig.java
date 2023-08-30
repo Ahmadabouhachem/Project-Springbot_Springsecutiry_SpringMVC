@@ -35,30 +35,28 @@ public class SecurityConfig {
         return jdbcUserDetailsManager;
     }
 
+    /* @Bean
+     public InMemoryUserDetailsManager userDetailsManager() {
+         UserDetails ahmad = User.builder()
+                 .username("ahmad")
+                 .password("{bcrypt}$2a$10$Y9u2ihG0wp/qBOgoSpAfoulP/QLs8CFMmTnTR1qpA2en4j/iGxOQO")
+                 .roles("USER", "MANAGER", "ADMIN")
+                 .build();
 
-   /* @Bean
-    public InMemoryUserDetailsManager userDetailsManager() {
-        UserDetails ahmad = User.builder()
-                .username("ahmad")
-                .password("{bcrypt}$2a$10$Y9u2ihG0wp/qBOgoSpAfoulP/QLs8CFMmTnTR1qpA2en4j/iGxOQO")
-                .roles("USER", "MANAGER", "ADMIN")
-                .build();
+         UserDetails basel = User.builder()
+                 .username("basel")
+                 .password("{bcrypt}$2a$10$7krRtFMBiyCUstEmQ4jBUOdjoL8egwqTvfOSt0Umhe4dpizpiPhB.")
+                 .roles("USER", "MANAGER")
+                 .build();
 
-        UserDetails basel = User.builder()
-                .username("basel")
-                .password("{bcrypt}$2a$10$7krRtFMBiyCUstEmQ4jBUOdjoL8egwqTvfOSt0Umhe4dpizpiPhB.")
-                .roles("USER", "MANAGER")
-                .build();
-
-        UserDetails najm = User.builder()
-                .username("najm")
-                .password("{bcrypt}$2a$10$QSEAsmiGHmXwffcJgOXJXeZCiCb42mGgmnxGCPRNVoeRsKOIrupbO")
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(ahmad, basel, najm);
-    }
-*/
-
+         UserDetails najm = User.builder()
+                 .username("najm")
+                 .password("{bcrypt}$2a$10$QSEAsmiGHmXwffcJgOXJXeZCiCb42mGgmnxGCPRNVoeRsKOIrupbO")
+                 .roles("USER")
+                 .build();
+         return new InMemoryUserDetailsManager(ahmad, basel, najm);
+     }
+ */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
@@ -110,12 +108,12 @@ public class SecurityConfig {
                         .requestMatchers("/company/leaders").hasRole("MANAGER")
                         .requestMatchers("/company/delete").hasRole("ADMIN")
                         .anyRequest().authenticated())
-                         .formLogin(form -> form
+                .formLogin(form -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/authenticateTheUser")
                         .permitAll())
-                         .logout(logout -> logout.permitAll())
-                         .exceptionHandling(configurer -> configurer.accessDeniedPage("/company/access"));
+                .logout(logout -> logout.permitAll())
+                .exceptionHandling(configurer -> configurer.accessDeniedPage("/company/access"));
 
      /*   http.httpBasic(Customizer.withDefaults());
         http.csrf(csrf -> csrf.disable());*/

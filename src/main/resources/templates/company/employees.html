@@ -12,26 +12,37 @@
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <style>
         .logout {
+            margin-bottom: 10px;
+            margin-top: 20px;
+            font-weight: bold;
             margin-left: 90%;
             background-color: orange;
             color: #ffffff;
             border: none;
-            border-radius: 4px;
-            padding: 5px 10px;
+            border-radius: 10px;
+            padding: 8px 10px;
             cursor: pointer;
             transition: background-color 0.5s ease;
         }
 
-        .role {
-            margin-left: 70%;
-            padding: 10px;
+        .profile {
+            margin-left: 90%;
+            padding: 10px 10px;
             background-color: #3498db;
             border-radius: 10px;
             font-weight: bold;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
         }
 
-        .meeting{
+        .meeting-container {
             margin-left: 70%;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .meeting {
             padding: 10px;
             background-color: darkseagreen;
             border-radius: 10px;
@@ -43,7 +54,13 @@
         input[type="submit"]:hover {
             background-color: coral;
         }
-        .meeting:hover{
+
+        .profile:hover{
+            background-color: #5ca7de;
+            color: white;
+        }
+
+        .meeting:hover {
             background-color: green;
             color: white;
         }
@@ -57,15 +74,13 @@
 <div class="container">
 
     <h3>Company Employees</h3>
-    <p class="role">
-        User: <span sec:authentication="principal.username"></span>
-        <br>
-        Role: <span sec:authentication="principal.authorities"></span>
-        <br>
-    <div  sec:authorize="hasRole('MANAGER')">
+
+    <div class="meeting-container" sec:authorize="hasRole('MANAGER')">
         <a class="meeting" th:href="@{/company/leaders}">Leadership Meeting (only for manager people)</a>
     </div>
-    </p>
+
+    <a class="profile" th:href="@{/company/profile}">profile</a>
+
     <form action="" th:action="@{/logout}" method="post">
         <input class="logout" type="submit" value="logout"/>
     </form>

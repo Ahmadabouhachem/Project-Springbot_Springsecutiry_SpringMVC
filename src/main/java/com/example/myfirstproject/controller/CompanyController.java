@@ -70,6 +70,11 @@ public class CompanyController {
 
    return "/company/access";
     }
+    @GetMapping("/profile")
+    public String profile(){
+
+        return "/company/profile";
+    }
 
 
 }
