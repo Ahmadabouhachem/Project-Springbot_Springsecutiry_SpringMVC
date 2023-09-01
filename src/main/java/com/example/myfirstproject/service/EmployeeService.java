@@ -13,6 +13,8 @@ public interface EmployeeService {
 
     Employee save(Employee theEmployee);
 
+    int count();
+
     void deleteById(int theId);
 
 }

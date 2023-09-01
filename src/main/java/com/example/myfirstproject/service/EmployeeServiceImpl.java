@@ -3,6 +3,9 @@ package com.example.myfirstproject.service;
 import com.example.myfirstproject.dao.EmployeeRepository;
 
 import com.example.myfirstproject.entity.Employee;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +52,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void deleteById(int theId) {
         employeeRepository.deleteById(theId);
     }
+
+    @Override
+    public int count() {
+        return (int) employeeRepository.count();
+    }
+
 }
 

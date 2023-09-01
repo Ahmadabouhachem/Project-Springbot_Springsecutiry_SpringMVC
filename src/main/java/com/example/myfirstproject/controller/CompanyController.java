@@ -27,6 +27,8 @@ public class CompanyController {
     public String getEmployees(Model theModel) {
         List<Employee> myEmployees = employeeService.findAll();
         theModel.addAttribute("Employees", myEmployees);
+        int count = employeeService.count();
+        theModel.addAttribute("count", count);
         return "/company/employees";
     }
 
@@ -60,18 +62,19 @@ public class CompanyController {
     }
 
     @GetMapping("/leaders")
-    public String leaderMeeting(){
+    public String leaderMeeting() {
 
         return "/company/meetings";
     }
 
     @GetMapping("/access")
-    public String accessFailure(){
+    public String accessFailure() {
 
-   return "/company/access";
+        return "/company/access";
     }
+
     @GetMapping("/profile")
-    public String profile(){
+    public String profile() {
 
         return "/company/profile";
     }

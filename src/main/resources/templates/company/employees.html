@@ -57,7 +57,7 @@
             background-color: coral;
         }
 
-        .profile:hover{
+        .profile:hover {
             background-color: #005ea1;
             color: white;
         }
@@ -68,6 +68,12 @@
         }
 
     </style>
+    <script>
+        function displayText() {
+            var text = document.getElementById("textField");
+            text.style.display = "block";
+        }
+    </script>
     <title>Company Employees</title>
 </head>
 
@@ -129,6 +135,12 @@
     </table>
 
     <a th:href="@{/company/form}" class="btn btn-info btn-sm"> Add Employee </a>
+
+    <button onclick="displayText()" class="btn btn-info btn-sm">Count Employees!</button>
+
+    <div id="textField" style="display: none;">
+        <span id="clicks" style="font-style: italic; font-weight: bold; color:#005ea1 " th:text="${count}"></span>
+    </div>
 
 </div>
 
